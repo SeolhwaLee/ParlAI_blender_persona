@@ -135,7 +135,8 @@ class InteractiveWorld(InteractiveBaseWorld):
         self.contexts_data = get_contexts_data(self.opt, shared=shared)
 
     def get_contexts(self):
-        random.seed()
+        # random.seed()
+        random.seed(42)
         p = random.choice(self.contexts_data)
         return p[0], p[1]
 
