@@ -138,7 +138,7 @@ class InteractiveWorld(DialogPartnerWorld):
                                 agents[0].observe(validate(context_act))
                             try:
                                 # act = deepcopy(agents[0].act())
-                                act = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': True,
+                                act = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': False,
                                            'text': str(turn_each)}
                             except StopIteration:
                                 self.reset()
@@ -146,7 +146,7 @@ class InteractiveWorld(DialogPartnerWorld):
                                 self.turn_cnt = 0
                                 return
 
-                            acts[0] = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': True,
+                            acts[0] = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': False,
                                        'text': str(turn_each)}
 
                             if self.turn_cnt == 0 and self.p2 != '':
@@ -165,10 +165,6 @@ class InteractiveWorld(DialogPartnerWorld):
                             self.update_counters()
                             self.turn_cnt += 1
 
-                            if act['episode_done']:
-                                self.finalize_episode()
-                                self.turn_cnt = 0
-
                         # first turn
                         # acts[0] = {'id': 'localHuman', 'episode_done': True, 'label_candidates': None,
                         #            'text': str(turn_each)}
@@ -186,7 +182,7 @@ class InteractiveWorld(DialogPartnerWorld):
 
                         try:
                             # act = deepcopy(agents[0].act())
-                            act = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': False,
+                            act = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': True,
                                        'text': str(turn_each)}
                         except StopIteration:
                             self.reset()
@@ -194,7 +190,7 @@ class InteractiveWorld(DialogPartnerWorld):
                             self.turn_cnt = 0
                             return
 
-                        acts[0] = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': False,
+                        acts[0] = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': True,
                                    'text': str(turn_each)}
 
                         if self.turn_cnt == 0 and self.p2 != '':
@@ -213,6 +209,9 @@ class InteractiveWorld(DialogPartnerWorld):
                         self.update_counters()
                         self.turn_cnt += 1
 
+                        if act['episode_done']:
+                            self.finalize_episode()
+                            self.turn_cnt = 0
 
 
                     turn_temp = []
@@ -296,14 +295,14 @@ class InteractiveWorld(DialogPartnerWorld):
 
                             try:
                                 # act = deepcopy(agents[0].act())
-                                act = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': True,
+                                act = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': False,
                                            'text': str(turn_each)}
                             except StopIteration:
                                 self.reset()
                                 self.finalize_episode()
                                 self.turn_cnt = 0
                                 return
-                            acts[0] = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': True,
+                            acts[0] = {'id': 'safeLocalHuman', 'label_candidates': None, 'episode_done': False,
                                        'text': str(turn_each)}
 
                             if self.turn_cnt == 0 and self.p2 != '':
@@ -322,9 +321,7 @@ class InteractiveWorld(DialogPartnerWorld):
                             self.update_counters()
                             self.turn_cnt += 1
 
-                            if act['episode_done']:
-                                self.finalize_episode()
-                                self.turn_cnt = 0
+
 
                         # first turn
                         if self.turn_cnt == 0:
@@ -341,14 +338,14 @@ class InteractiveWorld(DialogPartnerWorld):
 
                         try:
                             # act = deepcopy(agents[0].act())
-                            act = {'id': 'safeLocalHuman', 'episode_done': False, 'label_candidates': None,
+                            act = {'id': 'safeLocalHuman', 'episode_done': True, 'label_candidates': None,
                                        'text': str(turn_each)}
                         except StopIteration:
                             self.reset()
                             self.finalize_episode()
                             self.turn_cnt = 0
                             return
-                        acts[0] = {'id': 'safeLocalHuman', 'episode_done': False, 'label_candidates': None,
+                        acts[0] = {'id': 'safeLocalHuman', 'episode_done': True, 'label_candidates': None,
                                    'text': str(turn_each)}
                         if self.turn_cnt == 0 and self.p2 != '':
                             # add the context on to the first message to agent 1
@@ -365,6 +362,10 @@ class InteractiveWorld(DialogPartnerWorld):
                         # script_response.write("%s\n" % (result))
                         self.update_counters()
                         self.turn_cnt += 1
+
+                        if act['episode_done']:
+                            self.finalize_episode()
+                            self.turn_cnt = 0
 
 
 
