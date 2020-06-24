@@ -341,14 +341,14 @@ class InteractiveWorld(DialogPartnerWorld):
 
                         try:
                             # act = deepcopy(agents[0].act())
-                            act = {'id': 'localHuman', 'episode_done': False, 'label_candidates': None,
+                            act = {'id': 'safeLocalHuman', 'episode_done': False, 'label_candidates': None,
                                        'text': str(turn_each)}
                         except StopIteration:
                             self.reset()
                             self.finalize_episode()
                             self.turn_cnt = 0
                             return
-                        acts[0] = {'id': 'localHuman', 'episode_done': False, 'label_candidates': None,
+                        acts[0] = {'id': 'safeLocalHuman', 'episode_done': False, 'label_candidates': None,
                                    'text': str(turn_each)}
                         if self.turn_cnt == 0 and self.p2 != '':
                             # add the context on to the first message to agent 1
