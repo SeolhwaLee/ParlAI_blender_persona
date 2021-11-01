@@ -16,7 +16,7 @@ python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/
 ```bash
 2turns
 python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_3B/model \\
---include-personas True -sc True \\ # --include-personas False : withough persona
+--include-personas True -sc True \\ # --include-personas False : without persona
 -scip [path/to/input/script/file] \\
 -scop [path/to/save/output/file] \\
 --chateval-multi True --chateval-multi-num 2
