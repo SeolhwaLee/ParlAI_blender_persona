@@ -6,7 +6,7 @@ cd ~/ParlAI_blender_persona; python setup.py develop
 ```
 - **[single-turn] with persona**
 ```bash
-python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_3B/model \\
+python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_90M/model \\
 --include-personas True -sc True \\
 -scip [path/to/input/script/file] \\
 -scop [path/to/save/output/file] \\
@@ -15,7 +15,7 @@ python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/
 - **[multi-turn] with persona**
 ```bash
 2turns
-python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_3B/model \\
+python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_90M/model \\
 --include-personas True -sc True \\ # --include-personas False : without persona
 -scip [path/to/input/script/file] \\
 -scop [path/to/save/output/file] \\
